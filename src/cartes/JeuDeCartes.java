@@ -5,9 +5,9 @@ public class JeuDeCartes {
 			new Configuration(new Borne(25), 10),
 			new Configuration(new Borne(50), 10),
 			new Configuration(new Borne(75), 10),
-			new Configuration(new Borne(100), 15),
+			new Configuration(new Borne(100), 12),
 			new Configuration(new Borne(200), 4),
-			new Configuration(new Attaque(Type.FEU), 14),	// Feu Vert
+			new Configuration(new Parade(Type.FEU), 14),	// Feu Vert
 			new Configuration(new Parade(Type.VITESSE), 6),	// Fin Limite
 			new Configuration(new Parade(Type.ESSENCE), 6),	// Bidon d'essence
 			new Configuration(new Parade(Type.CREVAISON), 6),	// Roue de secours
@@ -24,9 +24,9 @@ public class JeuDeCartes {
 	};
 	
 	public void affichageJeuDeCartes() {
-		System.out.println("JEU\n");
+		System.out.println("JEU :\n");
 		for (Configuration conf : configurations) {
-			System.out.println(conf.nbExemplaire+" "+conf.carte+"\n");
+			System.out.println(conf.nbExemplaire+" "+conf.carte);
 		}
 	}
 	

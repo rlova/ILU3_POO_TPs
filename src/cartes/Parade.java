@@ -8,7 +8,7 @@ public class Parade extends Bataille {
 
 	@Override
 	public String toString() {
-		return "Parade []";
+		return getType().nomCarte("parade");
 	}
 	
 }

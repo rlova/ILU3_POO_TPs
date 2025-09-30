@@ -8,7 +8,7 @@ public class Botte extends Probleme {
 
 	@Override
 	public String toString() {
-		return "Botte []";
+		return getType().nomCarte("botte");
 	}
 
 }
