@@ -23,6 +23,13 @@ public class JeuDeCartes {
 			new Configuration(new Botte(Type.ACCIDENT), 1)	// As du volant
 	};
 	
+	public void affichageJeuDeCartes() {
+		System.out.println("JEU\n");
+		for (Configuration conf : configurations) {
+			System.out.println(conf.nbExemplaire+" "+conf.carte+"\n");
+		}
+	}
+	
 	public Carte[] donnerCartes() {
 		int totalCartes = 0;
 		for (Configuration conf : configurations) {
@@ -49,10 +56,6 @@ public class JeuDeCartes {
 
 		public Carte getCarte() {
 			return carte;
-		}
-
-		public int getNbExemplaire() {
-			return nbExemplaire;
 		}
 	}
 	
