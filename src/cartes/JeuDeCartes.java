@@ -44,9 +44,6 @@ public class JeuDeCartes {
 				numCarte++;
 			}
 		}
-		/*for (Configuration conf : configurations) {
-			cartes[numCarte++] = conf.getCarte();
-		}*/
 		return cartes;
 	}
 	
