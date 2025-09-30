@@ -5,7 +5,7 @@ public enum Type {
 	ESSENCE("Panne d'essence","Bidon d'essence","Citerne"),
 	CREVAISON("Crevaison","Roue de secours","Increvable"),
 	ACCIDENT("Accident","Réparation","As du volant"),
-	VITESSE("Limite 50","Fin Limite","Prioritaire");
+	VITESSE("Limite 50","Fin Limite","Prioritaire"); 
 	
 	private String attaque;
 	private String parade;
@@ -15,7 +15,7 @@ public enum Type {
 		this.attaque = attaque;
 		this.parade = parade;
 		this.botte = botte;
-	}
+	} 
 
 	public String getAttaque() {
 		return attaque;

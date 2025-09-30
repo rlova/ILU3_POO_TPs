@@ -8,7 +8,7 @@ public class Borne extends Carte {
 	}
 
 	public void setKm(Integer km) {
-		this.km = km;
+		this.km = km; 
 	}
 
 	@Override

@@ -10,18 +10,18 @@ public class JeuDeCartes {
 			new Configuration(new Parade(Type.FEU), 14),	// Feu Vert
 			new Configuration(new Parade(Type.VITESSE), 6),	// Fin Limite
 			new Configuration(new Parade(Type.ESSENCE), 6),	// Bidon d'essence
-			new Configuration(new Parade(Type.CREVAISON), 6),	// Roue de secours
+			new Configuration(new Parade(Type.CREVAISON), 6),	// Roue de secours 
 			new Configuration(new Parade(Type.ACCIDENT), 6),	// Réparation
 			new Configuration(new Attaque(Type.FEU), 5),	// Feu rouge
 			new Configuration(new Attaque(Type.VITESSE), 4),	// Limite 50
 			new Configuration(new Attaque(Type.ESSENCE), 3),	// Panne d'essence
 			new Configuration(new Attaque(Type.CREVAISON), 3),	// Crevaison
 			new Configuration(new Attaque(Type.ACCIDENT), 3),	// Accident
-			new Configuration(new Botte(Type.FEU), 1),	// Prioritaire
+			new Configuration(new Botte(Type.FEU), 1),	// Prioritaire 
 			new Configuration(new Botte(Type.ESSENCE), 1),	// Citerne
 			new Configuration(new Botte(Type.CREVAISON), 1),	// Increvable
 			new Configuration(new Botte(Type.ACCIDENT), 1)	// As du volant
-	};
+	}; 
 	
 	public void affichageJeuDeCartes() {
 		System.out.println("JEU :\n");
@@ -33,13 +33,20 @@ public class JeuDeCartes {
 	public Carte[] donnerCartes() {
 		int totalCartes = 0;
 		for (Configuration conf : configurations) {
-			totalCartes += conf.nbExemplaire;
+			totalCartes += conf.getNbExemplaire();
 		}
 		Carte[] cartes = new Carte[totalCartes];
 		int numCarte = 0;
 		for (Configuration conf : configurations) {
-			cartes[numCarte++] = conf.getCarte();
+			Carte carte = conf.getCarte();
+			for (int i=0; i<conf.getNbExemplaire(); i++) {
+				cartes[numCarte] = carte;
+				numCarte++;
+			}
 		}
+		/*for (Configuration conf : configurations) {
+			cartes[numCarte++] = conf.getCarte();
+		}*/
 		return cartes;
 	}
 	
@@ -56,6 +63,10 @@ public class JeuDeCartes {
 
 		public Carte getCarte() {
 			return carte;
+		}
+		
+		public int getNbExemplaire() {
+			return nbExemplaire;
 		}
 	}
 	
