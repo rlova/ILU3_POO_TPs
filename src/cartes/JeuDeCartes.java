@@ -41,6 +41,11 @@ public class JeuDeCartes {
 		for (Configuration conf : configurations) {
 			Carte carteAttendu = conf.getCarte();
 			int nbCarteAttendu = conf.getNbExemplaire();
+			for (Carte carte : donnerCartes()) {
+				if (carteAttendu.equals(carte.getClass())) {
+					nbCarte++;
+				}
+			}
 		}
 		return check;
 	}
