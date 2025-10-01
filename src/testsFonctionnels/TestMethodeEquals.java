@@ -2,10 +2,8 @@ package testsFonctionnels;
 
 import cartes.Attaque;
 import cartes.Borne;
-import cartes.JeuDeCartes;
 import cartes.Parade;
 import cartes.Type;
-import jeu.Sabot;
 
 public class TestMethodeEquals {
 	public static void main(String[] args) {

@@ -35,6 +35,16 @@ public class JeuDeCartes {
 		return cartes;
 	}
 	
+	public boolean checkCount() {
+		int nbCarte = 0;
+		boolean check = false;
+		for (Configuration conf : configurations) {
+			Carte carteAttendu = conf.getCarte();
+			int nbCarteAttendu = conf.getNbExemplaire();
+		}
+		return check;
+	}
+	
 	// classe interne
 	private static class Configuration {
 		private Carte carte;
