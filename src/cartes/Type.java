@@ -28,15 +28,5 @@ public enum Type {
 	public String getBotte() {
 		return botte;
 	}
-	
-	public String nomCarte(String role) {
-		switch (role) {
-			case "attaque" : return attaque;
-			case "parade" : return parade;
-			case "botte" : return botte;
-			default : return null;
-		}
-	}
-
 }
 
