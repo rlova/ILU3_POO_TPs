@@ -24,7 +24,6 @@ public class JeuDeCartes {
 	}; 
 	
 	public void affichageJeuDeCartes() {
-		System.out.println("JEU :\n");
 		for (Configuration conf : configurations) {
 			System.out.println(conf.nbExemplaire+" "+conf.carte);
 		}

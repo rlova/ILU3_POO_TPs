@@ -5,55 +5,57 @@ import java.util.Iterator;
 import cartes.Botte;
 import cartes.Carte;
 import cartes.JeuDeCartes;
-import cartes.Type;
 import jeu.Sabot;
 
 public class TestSabot {
-	public static void main(String[] args) {
-		JeuDeCartes jeu = new JeuDeCartes();
-		
-		// 2a) avec piocher
-		Carte[] cartes1 = jeu.donnerCartes();
-		Sabot sabot1 = new Sabot(cartes1);
-		//jeu.affichageJeuDeCartes();
-		while (!sabot1.estVide()) {
-			Carte cartepiocher = sabot1.piocher();
-			System.out.println("je pioche "+cartepiocher);
+	JeuDeCartes jeu = new JeuDeCartes();
+	Sabot sabot = new Sabot(jeu.donnerCartes());
+
+	// 4.2.a
+	public void questionA() {
+
+		while (!sabot.estVide()) {
+			Carte carte = sabot.piocher();
+			System.out.println("Je pioche " + carte);
 		}
-		
-		// 2b) avec itérateur
-		Carte[] cartes2 = jeu.donnerCartes();
-		Sabot sabot2 = new Sabot(cartes2);
-		Iterator<Carte> iterateur = sabot2.iterator();
-		while (iterateur.hasNext()) {
-			Carte carte = iterateur.next();
-			System.out.println("je pioche "+carte);
-			iterateur.remove();
-		}
-		
-		// 2c) appel à piocher dans la boucle pour lever l'exception
-		Carte[] cartes3 = jeu.donnerCartes();
-		Sabot sabot3 = new Sabot(cartes3);
-		Iterator<Carte> iterateurPioche = sabot3.iterator();
-		while (iterateurPioche.hasNext()) {
-			Carte carte = iterateurPioche.next();
-			sabot3.piocher();	
-			System.out.println("je pioche "+carte);
-			iterateurPioche.remove();
-		}
-		
-		// appel a piocher + as du volant
-		Carte[] cartes4 = jeu.donnerCartes();
-		Sabot sabot4 = new Sabot(cartes4);
-		sabot4.piocher();	
-		Iterator<Carte> iterateurAs = sabot4.iterator();
-		while (iterateurAs.hasNext()) {
-			Carte carte = iterateurAs.next();
-			Botte as = new Botte(Type.ACCIDENT);
-			sabot4.ajouterCarte(as);
-			System.out.println("je pioche "+carte);
-			iterateurAs.remove();
+//		Console :
+//		Je pioche Accident
+//		Je pioche Accident
+//		Je pioche Accident
+//		Je pioche R�paration
+//		Je pioche R�paration
+//		Je pioche R�paration
+//		Je pioche As du volant
+	}
+
+	// 4.2.b
+	public void questionB() {
+		for (Iterator<Carte> iterator = sabot.iterator(); iterator.hasNext();) {
+			System.out.println("Je pioche " + iterator.next());
+			iterator.remove();
 		}
 	}
+
+	// 4.2.c
+	public void questionC() {
+		Carte cartePiochee = sabot.piocher();
+		System.out.println("Je pioche " + cartePiochee);
+		for (Iterator<Carte> iterator = sabot.iterator(); iterator.hasNext();) {
+			Carte carte = iterator.next();
+			System.out.println("Je pioche " + carte);
+			iterator.remove();
+			cartePiochee = sabot.piocher();
+			sabot.ajouterCarte(new Botte(cartes.Type.ACCIDENT));
+		}
+		Iterator<Carte> iterator = sabot.iterator();
+		System.out.println("\nLa pioche contient encore des cartes ? " + iterator.hasNext());
+	}
+
+	public static void main(String[] args) {
+		TestSabot testPioche = new TestSabot();
+		testPioche.questionA();
+		testPioche.questionB();
+		testPioche.questionC();
+	}
+
 }
- 
