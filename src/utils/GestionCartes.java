@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
@@ -31,5 +32,20 @@ public class GestionCartes {
 			listeMelangee.add(element);
 		}
 		return listeMelangee;
+	}
+	
+	public static <T> boolean verifierMelange(List<T> liste1, List<T> liste2) {
+		if (liste1.size()!=liste2.size()) {
+			return false;
+		}
+		ArrayList<T> elementAVerifier = new ArrayList<T>();
+		for (T element : elementAVerifier) {
+			int nbListe1 = Collections.frequency(liste1, element);
+			int nbListe2 = Collections.frequency(liste2, element);
+			if (nbListe1!=nbListe2) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
