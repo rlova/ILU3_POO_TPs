@@ -36,18 +36,21 @@ public class JeuDeCartes {
 	}
 	
 	public boolean checkCount() {
-		int nbCarte = 0;
-		boolean check = false;
+		Carte[] cartes = donnerCartes();
 		for (Configuration conf : configurations) {
 			Carte carteAttendu = conf.getCarte();
 			int nbCarteAttendu = conf.getNbExemplaire();
-			for (Carte carte : donnerCartes()) {
-				if (carteAttendu.equals(carte.getClass())) {
-					nbCarte++;
+			int nbCarteTrouve = 0;
+			for (Carte carte : cartes) {
+				if (carte == carteAttendu) {
+					nbCarteTrouve++;
 				}
 			}
+			if (nbCarteTrouve!=nbCarteAttendu) {
+				return false;
+			}
 		}
-		return check;
+		return true;
 	}
 	
 	// classe interne
