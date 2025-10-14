@@ -2,9 +2,11 @@ package utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
+import java.util.Set;
 
 public class GestionCartes {
 	public static <T> T extraire(List<T> liste) {
@@ -38,7 +40,7 @@ public class GestionCartes {
 		if (liste1.size()!=liste2.size()) {
 			return false;
 		}
-		ArrayList<T> elementAVerifier = new ArrayList<T>();
+		Set<T> elementAVerifier = new HashSet<T>();	// Pour éviter 2 fois les memes valeurs
 		for (T element : elementAVerifier) {
 			int nbListe1 = Collections.frequency(liste1, element);
 			int nbListe2 = Collections.frequency(liste2, element);
@@ -47,5 +49,21 @@ public class GestionCartes {
 			}
 		}
 		return true;
+	}
+	
+	public static <T> List<T> rassembler(List<T> liste) {
+		ArrayList<T> listeRassemblee = new ArrayList<T>();	// pour inverser les valeurs
+		Set<T> elementTraite = new HashSet<T>();	// pour contenir les élements après vérification
+		for (T element : liste) {
+			if (!elementTraite.contains(element)) {
+				for (T elem : liste) {
+					if (elem.equals(element)) {
+						listeRassemblee.add(element);
+					}
+				}
+			}
+			elementTraite.add(element);
+		}
+		return listeRassemblee;
 	}
 }
