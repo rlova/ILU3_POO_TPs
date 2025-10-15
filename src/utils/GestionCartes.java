@@ -40,7 +40,7 @@ public class GestionCartes {
 		if (liste1.size()!=liste2.size()) {
 			return false;
 		}
-		Set<T> elementAVerifier = new HashSet<T>();	// Pour éviter 2 fois les memes valeurs
+		Set<T> elementAVerifier = new HashSet<>();	// Pour éviter de vérifier 2 fois les memes valeurs
 		for (T element : elementAVerifier) {
 			int nbListe1 = Collections.frequency(liste1, element);
 			int nbListe2 = Collections.frequency(liste2, element);
@@ -52,8 +52,8 @@ public class GestionCartes {
 	}
 	
 	public static <T> List<T> rassembler(List<T> liste) {
-		ArrayList<T> listeRassemblee = new ArrayList<T>();	// pour inverser les valeurs
-		Set<T> elementTraite = new HashSet<T>();	// pour contenir les élements après vérification
+		ArrayList<T> listeRassemblee = new ArrayList<>();	// pour inverser les valeurs
+		Set<T> elementTraite = new HashSet<>();	// pour contenir les élements après vérification
 		for (T element : liste) {
 			if (!elementTraite.contains(element)) {
 				for (T elem : liste) {
@@ -67,31 +67,78 @@ public class GestionCartes {
 		return listeRassemblee;
 	}
 	
-	public static <T> boolean verifierRassemblement2(T element, ListIterator<T> liste) {
+	public static <T> boolean verifierRassemblement2(T element, List<T> liste) {
+		ListIterator<T> reste = liste.listIterator();
 		boolean present = false;
-		if (liste.hasNext()) {
-			if (element==liste.next()) {
-				present = true;
-			}
+		if (reste.hasNext() && liste.contains(element)) {
+			present = true;
 		}
 		return present;
 	}
 	
 	public static <T> boolean verifierRassemblement(List<T> liste) {
 		boolean consecutif = false;
+		if (!liste.isEmpty() && liste.size()==1) {
+			return true;
+		}
 		ListIterator<T> premier = liste.listIterator();
 		T element = premier.next();
-		if (premier.hasNext()) {
-			ListIterator<T> reste = liste.listIterator();
-			if (!verifierRassemblement2(element,reste)) {
+		if (premier.hasNext() && premier.next().equals(element)) {
+			consecutif = true;
+		} else {
+			verifierRassemblement2(element,liste);
+		}
+		return consecutif;
+	}
+	
+	/*public static <T> boolean verifierRassemblement2(T element, List<T> liste) {
+		ListIterator<T> reste = liste.listIterator();
+		boolean present = false;
+		if (reste.hasNext() && liste.contains(element)) {
+			present = true;
+		}
+		return present;
+	}
+	
+	public static <T> boolean verifierRassemblement(List<T> liste) {
+		boolean consecutif = false;
+		if (!liste.isEmpty() && liste.size()==1) {
+			return true;
+		}
+		ListIterator<T> premier = liste.listIterator();
+		T element = premier.next();
+		if (premier.hasNext() && !verifierRassemblement2(element,liste)) {
+			consecutif = true;
+		}
+		return consecutif;
+	}*/
+	
+	/*public static <T> boolean verifierRassemblement2(T element, ListIterator<T> liste) {
+		boolean present = false;
+		if (liste.hasNext() && element.equals(liste.next())) {
+			present = true;
+		}
+		return present;
+	}
+	
+	public static <T> boolean verifierRassemblement(List<T> liste) {
+		boolean consecutif = false;
+		if (!liste.isEmpty() && liste.size()==1) {
+			return true;
+		}
+		ListIterator<T> premier = liste.listIterator();
+		ListIterator<T> reste = liste.listIterator();
+		T element = premier.next();
+		while (!liste.isEmpty() && premier.hasNext()) {
+			if (element.equals(premier.next())) {
+				reste.next();
+				reste.remove();
 				consecutif = true;
+				premier.next();
+			} else {
+				verifierRassemblement2(element, reste);
 			}
 		}
 		return consecutif;
-		/*for (int i=0; i<liste.size(); i++) {
-			if (element!=premier.next()) {
-				reste.next();
-			}
-		}*/
-	}
+	}*/
 }
