@@ -66,4 +66,32 @@ public class GestionCartes {
 		}
 		return listeRassemblee;
 	}
+	
+	public static <T> boolean verifierRassemblement2(T element, ListIterator<T> liste) {
+		boolean present = false;
+		if (liste.hasNext()) {
+			if (element==liste.next()) {
+				present = true;
+			}
+		}
+		return present;
+	}
+	
+	public static <T> boolean verifierRassemblement(List<T> liste) {
+		boolean consecutif = false;
+		ListIterator<T> premier = liste.listIterator();
+		T element = premier.next();
+		if (premier.hasNext()) {
+			ListIterator<T> reste = liste.listIterator();
+			if (!verifierRassemblement2(element,reste)) {
+				consecutif = true;
+			}
+		}
+		return consecutif;
+		/*for (int i=0; i<liste.size(); i++) {
+			if (element!=premier.next()) {
+				reste.next();
+			}
+		}*/
+	}
 }
