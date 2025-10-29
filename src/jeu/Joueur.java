@@ -12,6 +12,7 @@ public class Joueur {
 	public Joueur(String nom) {
 		this.nom = nom;
 		this.zoneDeJeu = new ZoneDeJeu();
+		this.mainJoueur = new MainJoueur();
 	}
 
 	public String getNom() {
@@ -60,5 +61,9 @@ public class Joueur {
 	
 	public int donnerKmParcourus() {
 		return zoneDeJeu.donnerKmParcourus();
+	}
+	
+	public boolean estDepotAutorise(Carte carte) {
+		return zoneDeJeu.estDepotAutorise(carte);
 	}
 }
