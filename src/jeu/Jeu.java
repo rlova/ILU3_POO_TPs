@@ -1,6 +1,7 @@
 package jeu;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,22 +12,21 @@ import cartes.Carte;
 public class Jeu {
 	private Sabot sabot;	
 	
-	/*public Jeu(List<Carte> listeCartes) {
+	public Jeu() {
+//		récupère le tableau de cartes de la classe JeuDeCartes
 		JeuDeCartes jeuDeCartes = new JeuDeCartes();
-		List<Carte> listeCarteNonMelangee = new LinkedList<>();
-		for (Carte carte : jeuDeCartes.donnerCartes()) {
-			listeCarteNonMelangee.add(carte);
-		}
-		listeCartes = new ArrayList<>(listeCarteNonMelangee);
+		Carte[] tableauCartes = jeuDeCartes.donnerCartes();
+//		transforme en liste
+		List<Carte> listeCartes = new ArrayList<>();
+		Collections.addAll(listeCartes, tableauCartes);
+//		mélanger les cartes
 		listeCartes = GestionCartes.melanger(listeCartes);
-		sabot = new Sabot(listeCartes.toArray());
-	}*/
-	/*public Jeu(Carte[] listeCartes) {
-		JeuDeCartes jeuDeCartes = new JeuDeCartes();
-		List<Carte> listeCarteNonMelangee = new LinkedList<>();
-		for (Carte carte : jeuDeCartes.donnerCartes()) {
-			listeCarteNonMelangee.add(carte);
-		}
-		
-	}*/
+//		créer sabot avec le tableau des cartes mélangées
+		Carte[] cartesMelangees = listeCartes.toArray(new Carte[0]);
+		sabot = new Sabot(cartesMelangees);
+	}
+
+	public Sabot getSabot() {
+		return sabot;
+	}
 }

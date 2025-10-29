@@ -42,7 +42,7 @@ public class JeuDeCartes {
 			int nbCarteAttendu = conf.getNbExemplaire();
 			int nbCarteTrouve = 0;
 			for (Carte carte : cartes) {
-				if (carte == carteAttendu) {
+				if (carte.equals(carteAttendu)) {
 					nbCarteTrouve++;
 				}
 			}
