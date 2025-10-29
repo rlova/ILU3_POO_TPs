@@ -50,13 +50,16 @@ public class ZoneDeJeu {
 	}
 	
 	public boolean peutAvancer() {
-		return (!pileBataille.isEmpty() && pileBataille.get(pileBataille.size()-1) == Cartes.FEU_VERT);
+		return !pileBataille.isEmpty() && pileBataille.get(pileBataille.size()-1).equals(Cartes.FEU_VERT);
 	}
 	
 	private boolean estDepotFeuVertAutorise() {
-		return (pileBataille.isEmpty() || pileBataille.get(pileBataille.size()-1) == Cartes.FEU_ROUGE 
-				|| ((pileBataille.get(pileBataille.size()-1)) instanceof Parade 
-				&& pileBataille.get(pileBataille.size()-1) != Cartes.FEU_VERT));
+		if (pileBataille.isEmpty()) {
+			return true;
+		}
+		Bataille sommet =  pileBataille.get(pileBataille.size()-1);
+		return  sommet.equals(Cartes.FEU_ROUGE) || (sommet instanceof Parade 
+				&& !sommet.equals(Cartes.FEU_VERT));
 	}
 	
 	private boolean estDepotBorneAutorise(Borne borne) {
@@ -84,12 +87,18 @@ public class ZoneDeJeu {
 			return peutAvancer();
 		}
 		if (bataille instanceof Parade) {
-			if (bataille == Cartes.FEU_VERT) {
+			if (bataille.equals(Cartes.FEU_VERT)) {
 				return estDepotFeuVertAutorise();
-			} else {
-				return (!pileBataille.isEmpty() && pileBataille.get(pileBataille.size()-1) instanceof Attaque
-						&& pileBataille.get(pileBataille.size()-1).getClass().equals(bataille.getClass()));
 			}
+			if (pileBataille.isEmpty()) {
+				return false;
+			}
+			Bataille sommet = pileBataille.get(pileBataille.size()-1);
+			if (!(sommet instanceof Attaque)) {
+				return false;
+			}
+//			même types
+			return sommet.getType().equals(bataille.getType());
 		}
 		return false;
 	}

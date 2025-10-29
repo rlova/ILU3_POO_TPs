@@ -63,6 +63,10 @@ public class Joueur {
 		return zoneDeJeu.donnerKmParcourus();
 	}
 	
+	public void deposer(Carte carte) {
+		zoneDeJeu.deposer(carte);
+	}
+	
 	public boolean estDepotAutorise(Carte carte) {
 		return zoneDeJeu.estDepotAutorise(carte);
 	}
