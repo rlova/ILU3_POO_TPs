@@ -2,9 +2,12 @@ package jeu;
 
 import java.util.Objects;
 
+import cartes.Carte;
+
 public class Joueur {
 	private String nom;
 	private ZoneDeJeu zoneDeJeu;
+	private MainJoueur mainJoueur;
 	
 	public Joueur(String nom) {
 		this.nom = nom;
@@ -18,8 +21,10 @@ public class Joueur {
 	public ZoneDeJeu getZoneDeJeu() {
 		return zoneDeJeu;
 	}
-	
-	
+
+	public MainJoueur getMainJoueur() {
+		return mainJoueur;
+	}
 
 	@Override
 	public int hashCode() {
@@ -41,4 +46,15 @@ public class Joueur {
 		return nom;
 	}
 	
+	public void donner(Carte carte) {
+		mainJoueur.prendre(carte);
+	}
+	
+	public Carte prendreCarte(Sabot sabot) {
+		Carte carte = sabot.piocher();
+		if (carte != null) {
+			donner(carte);
+		}
+		return carte;
+	}
 }
