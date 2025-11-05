@@ -10,6 +10,9 @@ import java.util.Random;
 import java.util.Set;
 
 public class GestionCartes {
+	private GestionCartes() {
+		throw new IllegalStateException("");
+	}
 	private static Random random = new Random();
 	public static <T> T extraire(List<T> liste) {
 		int index = random.nextInt(liste.size());
@@ -18,7 +21,7 @@ public class GestionCartes {
 	
 	public static <T> T extraireIterator(List<T> liste) {
 		int index = random.nextInt(liste.size());
-		ListIterator<T> it = liste.listIterator();
+		ListIterator<T> it = liste.listIterator(index);
 		T element = null; // element qu'on va supprimer
 		for (int i=0; i<=index; i++) {
 			element = it.next();
@@ -58,8 +61,7 @@ public class GestionCartes {
 //			prendre le premier elem
 			T element = listeCopie.get(0);
 //			parcourir avec Iterator pour supp 
-			Iterator<T> it = listeCopie.iterator();
-			while (it.hasNext()) {
+			for (Iterator<T> it = listeCopie.iterator(); it.hasNext();) {
 				T elem = it.next();
 				if (elem.equals(element)) {
 					listeRassemblee.add(elem);
@@ -71,7 +73,7 @@ public class GestionCartes {
 	}
 	
 //	pour vérifier si un elem apparait dans le reste de la liste à partir de la position de l'itérateur
-	public static <T> boolean verifierRassemblement2(T element, ListIterator<T> reste) {
+	public static <T> boolean verifierCarteSurResteListe(T element, ListIterator<T> reste) {
 		while (reste.hasNext()) {
 			if (reste.next().equals(element)) {
 				return true;
@@ -86,18 +88,16 @@ public class GestionCartes {
 		if (liste == null || liste.isEmpty() || liste.size()==1) {
 			return true;
 		}
-		ListIterator<T> premier = liste.listIterator();
-		T elementCourant = premier.next();
-		while (premier.hasNext()) {
+		for (ListIterator<T> premier = liste.listIterator(); premier.hasNext();) {
+			T elementCourant = premier.next();
 			T elementSuivant = premier.next();
 //			changement de valeur
 			if (!elementSuivant.equals(elementCourant)) {
 				ListIterator<T> reste = liste.listIterator(premier.nextIndex());
 //				vérifie si l'ancien réapparait
-				if (verifierRassemblement2(elementCourant, reste)) {
+				if (verifierCarteSurResteListe(elementCourant, reste)) {
 					return false;
 				}
-				elementCourant = elementSuivant;
 			}
 		}
 		return true;

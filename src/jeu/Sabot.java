@@ -1,6 +1,5 @@
 package jeu;
 
-import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -11,7 +10,7 @@ public class Sabot implements Iterable<Carte> {
 	private Carte[] cartes;
 	private int nbCartes;
 	private int nbOperations = 0;
-
+	
 	public Sabot(Carte[] cartesInitiales) {
 		this.cartes = new Carte[cartesInitiales.length];
 		for (int i = 0; i < cartesInitiales.length; i++) {

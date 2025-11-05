@@ -1,11 +1,14 @@
 package jeu;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import cartes.Attaque;
 import cartes.Bataille;
 import cartes.Borne;
+import cartes.Botte;
 import cartes.Carte;
 import cartes.Cartes;
 import cartes.DebutLimite;
@@ -17,11 +20,13 @@ public class ZoneDeJeu {
 	private List<Limite> pileLimites;
 	private List<Bataille> pileBataille;
 	private List<Borne> collectionBornes;
+	private Set<Botte> bottes;
 	
 	public ZoneDeJeu() {
 		this.pileLimites = new ArrayList<>();
 		this.pileBataille = new ArrayList<>();
 		this.collectionBornes = new ArrayList<>();
+		this.bottes = new HashSet<>();
 	}
 	
 	public int donnerLimitationVitesse() {
