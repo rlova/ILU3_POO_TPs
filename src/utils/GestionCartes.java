@@ -50,7 +50,7 @@ public class GestionCartes {
 			if (nbListe1!=nbListe2) {
 				return false;
 			}
-		}
+		} 
 		return true;
 	}
 	
@@ -73,7 +73,7 @@ public class GestionCartes {
 	}
 	
 //	pour vérifier si un elem apparait dans le reste de la liste à partir de la position de l'itérateur
-	public static <T> boolean verifierCarteSurResteListe(T element, ListIterator<T> reste) {
+	public static <T> boolean verifierElementSurResteListe(T element, ListIterator<T> reste) {
 		while (reste.hasNext()) {
 			if (reste.next().equals(element)) {
 				return true;
@@ -95,7 +95,7 @@ public class GestionCartes {
 			if (!elementSuivant.equals(elementCourant)) {
 				ListIterator<T> reste = liste.listIterator(premier.nextIndex());
 //				vérifie si l'ancien réapparait
-				if (verifierCarteSurResteListe(elementCourant, reste)) {
+				if (verifierElementSurResteListe(elementCourant, reste)) {
 					return false;
 				}
 			}
