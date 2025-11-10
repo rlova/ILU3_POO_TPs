@@ -19,20 +19,20 @@ public class Borne extends Carte {
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(km);
-	}
-
-	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (!super.equals(obj))
+		}
+		if (!super.equals(obj)) {
 			return false;
-		if (!(obj instanceof Borne))
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Borne other = (Borne) obj;
 		return Objects.equals(km, other.km);
 	}
+
+
 	
 }
