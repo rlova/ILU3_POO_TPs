@@ -21,11 +21,11 @@ public class GestionCartes {
 	
 	public static <T> T extraireIterator(List<T> liste) {
 		int index = random.nextInt(liste.size());
-		ListIterator<T> it = liste.listIterator(index);
-		T element = null; // element qu'on va supprimer
+		ListIterator<T> it = liste.listIterator();
 		for (int i=0; i<=index; i++) {
-			element = it.next();
+			it.next();
 		}
+		T element = it.previous(); // element qu'on va supprimer
 		it.remove();
 		return element;
 	}

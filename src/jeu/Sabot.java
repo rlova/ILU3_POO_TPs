@@ -12,10 +12,7 @@ public class Sabot implements Iterable<Carte> {
 	private int nbOperations = 0;
 	
 	public Sabot(Carte[] cartesInitiales) {
-		this.cartes = new Carte[cartesInitiales.length];
-		for (int i = 0; i < cartesInitiales.length; i++) {
-			this.cartes[i] = cartesInitiales[i];
-		}
+		this.cartes = cartesInitiales;
 		this.nbCartes = cartesInitiales.length;
 	}
 
