@@ -1,7 +1,5 @@
 package cartes;
 
-import java.util.Objects;
-
 public abstract class Probleme extends Carte {
 	private Type type;
 	

@@ -1,18 +1,14 @@
 package jeu;
 
-import java.util.Objects;
-
 import cartes.Carte;
 
 public class Joueur {
 	private String nom;
-	private ZoneDeJeu zoneDeJeu;
-	private MainJoueur mainJoueur;
+	private ZoneDeJeu zoneDeJeu = new ZoneDeJeu();
+	private MainJoueur mainJoueur = new MainJoueur();
 	
 	public Joueur(String nom) {
 		this.nom = nom;
-		this.zoneDeJeu = new ZoneDeJeu();
-		this.mainJoueur = new MainJoueur();
 	}
 
 	public String getNom() {

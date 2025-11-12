@@ -7,12 +7,7 @@ import java.util.List;
 import cartes.Carte;
 
 public class MainJoueur implements Iterable<Carte>{
-	private List<Carte> cartesEnMain;
-	
-	public MainJoueur() {
-		this.cartesEnMain = new ArrayList<>();
-	}
-	
+	private List<Carte> cartesEnMain = new ArrayList<>();
 	
 	public void prendre(Carte carte) {
 		cartesEnMain.add(carte);
