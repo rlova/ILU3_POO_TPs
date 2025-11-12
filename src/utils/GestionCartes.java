@@ -26,7 +26,7 @@ public class GestionCartes {
 		ListIterator<T> it = liste.listIterator(index);
 		T element = it.previous(); // element qu'on va supprimer
 		it.remove();
-		return element;
+		return element; 
 	}
 
 	public static <T> List<T> melanger(List<T> liste) {
