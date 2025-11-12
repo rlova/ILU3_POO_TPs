@@ -17,9 +17,9 @@ import cartes.Limite;
 import cartes.Parade;
 
 public class ZoneDeJeu {
-	private List<Limite> pileLimites = new ArrayList<>();
-	private List<Bataille> pileBataille = new ArrayList<>();
-	private List<Borne> collectionBornes = new ArrayList<>();
+	private List<Limite> pileLimites = new ArrayList<>(0);
+	private List<Bataille> pileBataille = new ArrayList<>(0);
+	private List<Borne> collectionBornes = new ArrayList<>(0);
 	private Set<Botte> bottes = new HashSet<>();
 
 	public boolean estPrioritaire() {
@@ -46,11 +46,11 @@ public class ZoneDeJeu {
 
 	public void deposer(Carte carte) {
 		if (carte instanceof Borne borne) {
-			collectionBornes.add(borne);
+			collectionBornes.add(0, borne);
 		} else if (carte instanceof Limite limite) {
-			pileLimites.add(limite);
+			pileLimites.add(0, limite);
 		} else if (carte instanceof Bataille bataille) {
-			pileBataille.add(bataille);
+			pileBataille.add(0, bataille);
 		} else if (carte instanceof Botte botte) {
 			bottes.add(botte);
 		}
